@@ -13,4 +13,14 @@ export default class FakeCategoriesRepository implements ICategoriesRepository {
     this.categories.push(category);
     return category;
   }
+
+  public async findByName({
+    name,
+  }: ICreateCategoryDTO): Promise<Category | undefined> {
+    const findCategory = this.categories.find(
+      (category) => category.name === name
+    );
+
+    return findCategory;
+  }
 }

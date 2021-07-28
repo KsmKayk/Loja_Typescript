@@ -16,6 +16,12 @@ class CategoryRepository implements ICategoriesRepository {
     await this.ormRepository.save(category);
     return category;
   }
+  public async findByName({
+    name,
+  }: ICreateCategoryDTO): Promise<Category | undefined> {
+    const findCategory = await this.ormRepository.findOne({ where: { name } });
+    return findCategory;
+  }
 }
 
 export default CategoryRepository;
